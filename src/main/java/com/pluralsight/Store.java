@@ -79,7 +79,8 @@ public class Store {
         // prompt the user to confirm the purchase, and calculate change and clear the cart
         // if they confirm.
     }
-
+}
+/*
     public static Product findProductById(String id, ArrayList<Product> inventory) {
         // This method should search the inventory ArrayList for a product with
         // the specified ID, and return the corresponding com.pluralsight.Product object. If
@@ -87,3 +88,4 @@ public class Store {
         // null.
     }
 }
+*/
