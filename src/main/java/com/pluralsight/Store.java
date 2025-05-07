@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -45,16 +47,24 @@ public class Store {
             }
         }
     }
-
+    // Reads transactions from file
     public static void loadInventory(String fileName, ArrayList<Product> inventory) {
-        // This method should read a CSV file with product information and
-        // populate the inventory ArrayList with com.pluralsight.Product objects. Each line
-        // of the CSV file contains product information in the following format:
-        //
-        // id,name,price
-        //
-        // where id is a unique string identifier, name is the product name,
-        // price is a double value representing the price of the product
+
+        String line;
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(fileName));
+            while((line = bufferedReader.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                String id = parts[0];
+                String name = parts[1];
+                double price = Double.parseDouble(parts[2]);
+                Product myP = new Product(id, name, price);
+                inventory.add(myP);
+            }
+        }catch (Exception e) {
+            System.err.println("Error reading file");
+        }
     }
 
     public static void displayProducts(ArrayList<Product> inventory, ArrayList<Product> cart, Scanner scanner) {
@@ -63,7 +73,7 @@ public class Store {
         // prompt the user to enter the ID of the product they want to add to
         // their cart. The method should
         // add the selected product to the cart ArrayList.
-    }
+
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
         // This method should display the items in the cart ArrayList, along

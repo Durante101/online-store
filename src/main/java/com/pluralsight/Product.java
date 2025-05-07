@@ -12,6 +12,11 @@ public class Product {
         this.price = price;
 
     }
+    public Product(String name, String id) {
+        this.name = name;
+        this.id = id;
+
+    }
     //Getters Setters
     public String getId() {
         return id;
@@ -35,5 +40,11 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+
+        return String.format("|-%s-|-%s-|-%.2f-|", id, name, price);
     }
 }
