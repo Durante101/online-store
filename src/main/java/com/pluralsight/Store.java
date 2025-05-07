@@ -73,7 +73,24 @@ public class Store {
         // prompt the user to enter the ID of the product they want to add to
         // their cart. The method should
         // add the selected product to the cart ArrayList.
+        System.out.println("====Products====");
+        for (Product product : inventory) {
+            System.out.println(product);
+        }
 
+        String id;
+        System.out.println("Enter the id of product you would like to purchase");
+        id = scanner.nextLine().trim();
+
+        String name;
+        System.out.println("Enter the id of product you would like to purchase");
+        name = scanner.nextLine().trim();
+
+
+
+        Product myP = new Product(id, name);
+        inventory.add(myP);
+    }
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
         // This method should display the items in the cart ArrayList, along
