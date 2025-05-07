@@ -73,7 +73,7 @@ public class Store {
         // prompt the user to enter the ID of the product they want to add to
         // their cart. The method should
         // add the selected product to the cart ArrayList.
-        System.out.println("====Products====");
+        System.out.println("==== Products ====");
         for (Product product : inventory) {
             System.out.println(product);
         }
@@ -82,14 +82,22 @@ public class Store {
         System.out.println("Enter the id of product you would like to purchase");
         id = scanner.nextLine().trim();
 
-        String name;
-        System.out.println("Enter the id of product you would like to purchase");
-        name = scanner.nextLine().trim();
+        boolean check = false;
+
+        for (Product product : inventory) {
+            if (product.getId().equalsIgnoreCase(id)) {
+                cart.add(product);
+                System.out.println(product.getName() + " Added to Cart!");
+                check = true;
+            }
+        }
+
+        if (!check) {
+            System.err.println("No results found for product");
+        }
 
 
 
-        Product myP = new Product(id, name);
-        inventory.add(myP);
     }
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
@@ -98,6 +106,7 @@ public class Store {
         // prompt the user to remove items from their cart by entering the ID
         // of the product they want to remove. The method should update the cart ArrayList and totalAmount
         // variable accordingly.
+
     }
 
     public static void checkOut(ArrayList<Product> cart, double totalAmount) {

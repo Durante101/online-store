@@ -6,13 +6,13 @@ public class Product {
     private String name;
     private double price;
     //Constructor
-    public Product(String name, String id, double price) {
-        this.name = name;
+    public Product(String id, String name, double price) {
         this.id = id;
+        this.name = name;
         this.price = price;
 
     }
-    public Product(String name, String id) {
+    public Product(String id, String name) {
         this.name = name;
         this.id = id;
 
