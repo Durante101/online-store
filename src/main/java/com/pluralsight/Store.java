@@ -166,7 +166,28 @@ public class Store {
             System.out.println("2. no");
             int confirm = scanner.nextInt();
 
-                h
+            if (confirm == 1) {
+                System.out.println("==== Check Out ====");
+                for (Product product : cart) {
+                    System.out.println(product);
+                    totalAmount += product.getPrice();
+
+                    System.out.printf("Your total will be $%.2f\n", totalAmount);
+
+                    System.out.println("Please enter in your cash payment");
+                    double payment = scanner.nextDouble();
+
+                    if (payment < totalAmount) {
+                        System.out.println("Insufficient funds");
+                    } else if (payment >= totalAmount) {
+                        payment -= totalAmount;
+                        for (Product product : cart) {
+                            System.out.println(product);
+                        }
+                    } else {
+                        System.out.println("Invalid payment!");
+                    }
+                }
                 check = true;
 
             } else if (confirm == 2) {
