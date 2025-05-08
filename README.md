@@ -1,23 +1,26 @@
 # Project Title
-
+Online Store
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
-This Java CLI application allows users to track all financial transactions. It can be used for both business and personal accounting purposes
-![Class Diagram](path/to/your/class_diagram.png)
+The purpose of the application is to let users view products, add or remove items from a cart, and complete a checkout.
 
 ## User Stories
 
 List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
-- As a customer I should have a home screen with multiple options so that add deposit, make payments, Ledger, and a Exit.
-- As a customer I want to add a deposit to my account so that I can save and keep track
-- As a customer I want to make a payment so that I'm able to keep track and purchase items
-- As a customer I want to be able to see the ledger screen So that I can see all entries deposits payments and reports
-- As a customer I want to look at the ledger screen and view reports so that a new screen will allow the user to run pre-defined reports or to run a custom search
-- As a customer I want to be able to do this to exit the program so that after I'm finished I can put away the application
+As a customer, I want to add a product to my cart by entering its ID so that I can collect the items I want to purchase.
+
+As a customer, I want to view the contents of my cart so that I can see which products I’ve selected and their prices.
+
+As a customer, I want to remove a product from my cart by entering its ID so that I can update my selection before checking out.
+
+As a customer, I want to see the total amount of my cart so that I know how much I need to pay at checkout.
+
+As a customer, I want to check out by confirming my purchase and entering a cash amount so that I can complete my order.
+
+As a customer, I want to receive a printed receipt with the change and all items listed so that I have proof of my purchase.
+
+As a customer, I want the shopping cart to be cleared after checkout so that I can start a new order from a clean state if I want to shop again.
 ## Setup
 
 Instructions on how to set up and run the project using IntelliJ IDEA.
@@ -39,34 +42,21 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
 - Java 17 Maven
 
 ## Demo
 
 Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
-
-![Application Screenshot](path/to/your/screenshot.png)
-
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055203.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055214.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055228.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055238.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055258.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055322.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055330.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055345.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055353.png)
-![image alt](https://github.com/Durante101/FinancialTracker/blob/main/Screenshot%202025-05-02%20055403.png)
-
+![Screenshot 2025-05-08 071958.png](Screenshot%202025-05-08%20071958.png)
+![Screenshot 2025-05-08 072031.png](Screenshot%202025-05-08%20072031.png)
+![Screenshot 2025-05-08 072037.png](Screenshot%202025-05-08%20072037.png)
+![Screenshot 2025-05-08 072046.png](Screenshot%202025-05-08%20072046.png)
+![Screenshot 2025-05-08 072053.png](Screenshot%202025-05-08%20072053.png)
 ## Future Work
 
 Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
-- Improvement of current functionalities.
-  Security code To be able to go back further than just the previous year To be able to compare how much you paid before and now
+A way for a user to choose multiple items at once without having to go back to the home screen
 ## Resources
 
 List resources such as tutorials, articles, or documentation that helped you during the project.
