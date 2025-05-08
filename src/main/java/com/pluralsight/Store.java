@@ -88,16 +88,16 @@ public class Store {
 
         boolean check = false;
         // Looks for the ID that the user enters which is inside inventory and adds the product to cart Arraylist
-        for (Product product : inventory) {
-            if (product.getId().equalsIgnoreCase(id)) {
+        if (!id.isEmpty()) {
+            Product product = Store.findProductById(id, inventory);
+            if (product != null) {
                 cart.add(product);
-                System.out.println(product.getName() + " Added to Cart!\n");
-                check = true;
+                System.out.println(product.getName() + " Added to cart.\n");
+            } else {
+                System.out.println("Product not found in cart.\n");
             }
-        }
-
-        if (!check) {
-            System.err.println("No results found for product");
+        } else {
+            System.out.println("No items Added.\n");
         }
 
 
@@ -128,28 +128,14 @@ public class Store {
 
             if (!id.isEmpty()) {
                 // Just learned you need an iterator in order to safely remove something from a list in Java
-                Product product = Product.findProductById(id, cart);
+                Product product = Store.findProductById(id, cart);
                 if (product != null) {
                     cart.remove(product);
                     System.out.println(product.getName() + " Removed from Cart!\n");
                 } else {
                     System.err.println("No results found for product");
                 }
-                /*
-                Iterator<Product> iterator = cart.iterator();
-                while (iterator.hasNext()) {
-                    Product product = iterator.next();
-                    if (product.getId().equalsIgnoreCase(id)) {
-                        iterator.remove();
-                        System.out.println(product.getName() + " Removed to Cart!\n");
-                        check = true;
-                    }
-                }
 
-                if (!check) {
-                    System.err.println("No results found for product");
-                }
-                */
             } else {
                 System.out.println("Skip...");
 
@@ -165,48 +151,48 @@ public class Store {
         // and display a summary of the purchase to the user. The method should
         // prompt the user to confirm the purchase, and calculate change and clear the cart
         // if they confirm.
-        Product selectedProduct = Product.findProductById(id, inventory);
-        if (selectedProduct != null) {
-
-        boolean check = false;
-
-        while (!check) {
-            System.out.println("Would you like to confirm your Purchase");
-            System.out.println("1. yes");
-            System.out.println("2. no");
-            int confirm = scanner.nextInt();
-
-            if (confirm == 1) {
-                System.out.println("==== Check Out ====");
-                for (Product product : cart) {
-                    System.out.println(product);
-                    totalAmount += product.getPrice();
-
-                    System.out.printf("Your total will be $%.2f\n", totalAmount);
-
-                    System.out.println("Please enter in your cash payment");
-                    double payment = scanner.nextDouble();
-
-                    if (payment < totalAmount) {
-                        System.out.println("Insufficient funds");
-                    } else if (payment >= totalAmount) {
-                        double change = payment - totalAmount;
-
-                        cart.clear();
-                    } else {
-                        System.out.println("Invalid payment!");
-                    }
-                }
-                check = true;
-
-            } else if (confirm == 2) {
-
-                check = true;
-
-            } else {
-                System.out.println("Invalid choice!");
-            }
+        if (cart.isEmpty()) {
+            System.out.println("Your cart is empty. Nothing to check out.");
+            return;
         }
+
+        System.out.println("Would you like to confirm your Purchase");
+        System.out.println("1. yes");
+        System.out.println("2. no");
+        int confirm = scanner.nextInt();
+
+        if (confirm == 1) {
+            System.out.println("Please enter your cash payment:");
+            double payment = scanner.nextDouble();
+
+            for (Product product : cart) {
+                System.out.println(product);
+                totalAmount += product.getPrice();
+            }
+
+            if (payment < totalAmount) {
+                System.out.println("Insufficient funds");
+            } else {
+                double change = payment - totalAmount;
+                System.out.printf("Change: $%.2f\n", change);
+                System.out.println("===== Receipt =====");
+                for (Product product : cart) {
+                    System.out.println(product.getName() + " - $" + String.format("%.2f", product.getPrice()));
+                }
+                System.out.printf("Total Paid: $%.2f\n", payment);
+                System.out.printf("Change: $%.2f\n", change);
+                System.out.println("Thank you for your purchase!");
+
+                // Clear cart
+                cart.clear();
+            }
+        } else {
+            System.out.println("");
+        }
+
+
+
+
 
 
 
