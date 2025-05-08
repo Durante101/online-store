@@ -166,7 +166,7 @@ public class Store {
             System.out.println("2. no");
             int confirm = scanner.nextInt();
 
-           
+                h
                 check = true;
 
             } else if (confirm == 2) {
