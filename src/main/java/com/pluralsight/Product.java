@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
+
 //Attributes
 public class Product {
     private String id;
@@ -17,6 +19,7 @@ public class Product {
         this.id = id;
 
     }
+
     //Getters Setters
     public String getId() {
         return id;

@@ -128,6 +128,14 @@ public class Store {
 
             if (!id.isEmpty()) {
                 // Just learned you need an iterator in order to safely remove something from a list in Java
+                Product product = Product.findProductById(id, cart);
+                if (product != null) {
+                    cart.remove(product);
+                    System.out.println(product.getName() + " Removed from Cart!\n");
+                } else {
+                    System.err.println("No results found for product");
+                }
+                /*
                 Iterator<Product> iterator = cart.iterator();
                 while (iterator.hasNext()) {
                     Product product = iterator.next();
@@ -141,7 +149,7 @@ public class Store {
                 if (!check) {
                     System.err.println("No results found for product");
                 }
-
+                */
             } else {
                 System.out.println("Skip...");
 
@@ -157,6 +165,8 @@ public class Store {
         // and display a summary of the purchase to the user. The method should
         // prompt the user to confirm the purchase, and calculate change and clear the cart
         // if they confirm.
+        Product selectedProduct = Product.findProductById(id, inventory);
+        if (selectedProduct != null) {
 
         boolean check = false;
 
@@ -180,10 +190,9 @@ public class Store {
                     if (payment < totalAmount) {
                         System.out.println("Insufficient funds");
                     } else if (payment >= totalAmount) {
-                        payment -= totalAmount;
-                        for (Product product : cart) {
-                            System.out.println(product);
-                        }
+                        double change = payment - totalAmount;
+
+                        cart.clear();
                     } else {
                         System.out.println("Invalid payment!");
                     }
