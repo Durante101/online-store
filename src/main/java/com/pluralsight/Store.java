@@ -3,7 +3,6 @@ package com.pluralsight;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Scanner;
 
 public class Store {
@@ -70,11 +69,7 @@ public class Store {
     }
 
     public static void displayProducts(ArrayList<Product> inventory, ArrayList<Product> cart, Scanner scanner) {
-        // This method should display a list of products from the inventory,
-        // and prompt the user to add items to their cart. The method should
-        // prompt the user to enter the ID of the product they want to add to
-        // their cart. The method should
-        // add the selected product to the cart ArrayList.
+
 
         // Prints out all products within the inventory
         System.out.println("==== Products ====");
@@ -105,19 +100,17 @@ public class Store {
     }
 
     public static void displayCart(ArrayList<Product> cart, Scanner scanner, double totalAmount) {
-        // This method should display the items in the cart ArrayList, along
-        // with the total cost of all items in the cart. The method should
-        // prompt the user to remove items from their cart by entering the ID
-        // of the product they want to remove. The method should update the cart ArrayList and totalAmount
-        // variable accordingly.
+        // Adds up the price of the total amount in the cart array list
         System.out.println("==== Cart ====");
         for (Product product : cart) {
             System.out.println(product);
             totalAmount += product.getPrice();
         }
+        // Checks if the amount is empty
         if (totalAmount == 0) {
             System.out.println("Your cart is Empty\n");
         } else {
+            // Display the official total amount
             System.out.printf("Your total will be $%.2f\n", totalAmount);
 
             String id;
@@ -125,7 +118,7 @@ public class Store {
             id = scanner.nextLine().trim();
 
             boolean check = false;
-
+            // Checks if the id is empty
             if (!id.isEmpty()) {
                 // Just learned you need an iterator in order to safely remove something from a list in Java
                 Product product = Store.findProductById(id, cart);
@@ -147,24 +140,22 @@ public class Store {
     }
 
     public static void checkOut(ArrayList<Product> cart, double totalAmount, Scanner scanner) {
-        // This method should calculate the total cost of all items in the cart,
-        // and display a summary of the purchase to the user. The method should
-        // prompt the user to confirm the purchase, and calculate change and clear the cart
-        // if they confirm.
+        // Checks if the cart is empty
         if (cart.isEmpty()) {
             System.out.println("Your cart is empty. Nothing to check out.");
             return;
         }
-
+        //
         System.out.println("Would you like to confirm your Purchase");
         System.out.println("1. yes");
         System.out.println("2. no");
         int confirm = scanner.nextInt();
-
+        // Asking the user for confirmation of purchase
         if (confirm == 1) {
             System.out.println("Please enter your cash payment:");
             double payment = scanner.nextDouble();
 
+            //Counts out all products within the inventory
             for (Product product : cart) {
                 System.out.println(product);
                 totalAmount += product.getPrice();
@@ -175,6 +166,7 @@ public class Store {
             } else {
                 double change = payment - totalAmount;
                 System.out.printf("Change: $%.2f\n", change);
+                // Printing receipt and showing it to the user
                 System.out.println("===== Receipt =====");
                 for (Product product : cart) {
                     System.out.println(product.getName() + " - $" + String.format("%.2f", product.getPrice()));
@@ -199,10 +191,7 @@ public class Store {
     }
 
     public static Product findProductById(String id, ArrayList<Product> inventory) {
-        // This method should search the inventory ArrayList for a product with
-        // the specified ID, and return the corresponding com.pluralsight.Product object. If
-        // no product with the specified ID is found, the method should return
-        // null.
+        // Helps automate finding the product by the id
         for (Product product : inventory) {
             if (product.getId().equalsIgnoreCase(id)) {
                 return product;
