@@ -208,7 +208,11 @@ public class Store {
         // the specified ID, and return the corresponding com.pluralsight.Product object. If
         // no product with the specified ID is found, the method should return
         // null.
-
+        for (Product product : inventory) {
+            if (product.getId().equalsIgnoreCase(id)) {
+                return product;
+            }
+        }
         return null;
     }
 }
