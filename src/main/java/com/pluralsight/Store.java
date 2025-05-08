@@ -158,13 +158,36 @@ public class Store {
         // prompt the user to confirm the purchase, and calculate change and clear the cart
         // if they confirm.
 
+        boolean check = false;
 
+        while (!check) {
+            System.out.println("Would you like to confirm your Purchase");
+            System.out.println("1. yes");
+            System.out.println("2. no");
+            int confirm = scanner.nextInt();
+
+           
+                check = true;
+
+            } else if (confirm == 2) {
+
+                check = true;
+
+            } else {
+                System.out.println("Invalid choice!");
+            }
+        }
+
+
+
+    }
 
     public static Product findProductById(String id, ArrayList<Product> inventory) {
         // This method should search the inventory ArrayList for a product with
         // the specified ID, and return the corresponding com.pluralsight.Product object. If
         // no product with the specified ID is found, the method should return
         // null.
-        
+
+        return null;
     }
 }
