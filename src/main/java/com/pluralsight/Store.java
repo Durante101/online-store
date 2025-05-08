@@ -87,7 +87,7 @@ public class Store {
         for (Product product : inventory) {
             if (product.getId().equalsIgnoreCase(id)) {
                 cart.add(product);
-                System.out.println(product.getName() + " Added to Cart!");
+                System.out.println(product.getName() + " Added to Cart!\n");
                 check = true;
             }
         }
@@ -109,6 +109,30 @@ public class Store {
         System.out.println("==== Cart ====");
         for (Product product : cart) {
             System.out.println(product);
+            totalAmount += product.getPrice();
+        }
+        if (totalAmount == 0) {
+            System.out.println("Your cart is Empty\n");
+        } else {
+            System.out.printf("Your total will be $%.2f\n", totalAmount);
+
+            String id;
+            System.out.println("Enter the id of product you would like to remove from cart");
+            id = scanner.nextLine().trim();
+
+            boolean check = false;
+
+            for (Product product : cart) {
+                if (product.getId().equalsIgnoreCase(id)) {
+                    cart.remove(product);
+                    System.out.println(product.getName() + " Removed to Cart!\n");
+                    check = true;
+                }
+            }
+
+            if (!check) {
+                System.err.println("No results found for product");
+            }
         }
 
     }
